@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update/Edit</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
+    crossorigin="anonymous">
+</head>
+<style>
+    .ssimg{
+        width: 450px;
+        border: 10px solid white;
+        margin-top: 11%;
+        margin-right: 12%;
+        border-radius: 35%;
+    }
+    .ssimg1{
+        width: 450px;
+        border: 10px solid white;
+        margin-top: 11%;
+        margin-right: 12%;
+        border-radius: 35%;
+    }
+</style>
+<body style="height: auto; background-repeat: no-repeat; background-image: linear-gradient(to top, white, blanchedalmond)">
+    <!-- navbar -->
+    <div class="navbar d-flex justify-content-evenly">
+        <span class="fs-3">Welcome {{ user['first_name'] }}</span>    
+        <a class="fs-5" href="/dashboard">Home</a>       
+        <a class="fs-5" href="/view_campaigns">Campaigns</a>
+        <a class="fs-5" href="/view_characters">Characters</a>
+        <a class="fs-5" href="/dice_roll">Dice Roller</a>
+        <a class="fs-5" href="/info">Race Info</a>
+        <a class="fs-7" href="/logout">logout</a>
+    </div>
+    <!-- div to display the selected campaign info -->
+    <div class="main d-flex">
+    <div class="ms-4 me-4">
+        <p class="fs-4 text-center">Campaign Name: {{camp['name']}}</p>
+        <p class="fs-5 text-center">Current Player: {{player['name']}} </p>
+        <form action="/change_player/{{camp['id']}}" method="post" class="fs-6 text-center">
+            <label for="player" class="form-label">Change Character:</label>
+            <select name="character_id" id="player">
+                {% for one in chars %}
+                    <option value="{{one.id}}">{{one.name}}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Confirm">
+        </form>
+        <form action="/update_camp/{{ camp['id']}}" method="post" class="form-control">
+            <textarea name="notes" id="notes" cols="100" rows="22">{{camp['notes']}}</textarea>
+            <br>
+            <button type="submit" class="btn btn-success">Update Notes</button>
+        </form>
+    </div>
+    <div class="pics ms-5">
+        <img src="/static/cedars.jpg" alt="Cedars" class="ssimg">
+        <br>
+        <img src="/static/lower_range.jpg" alt="Ascent of the Lower Range" class="ssimg1">
+    </div>
+</div>
+</body>
+</html>

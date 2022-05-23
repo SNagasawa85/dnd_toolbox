@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
+    crossorigin="anonymous">
+    <script src="{{ url_for('static', filename='/script.js') }}"></script>
+</head>
+<style>
+    .ssimg{
+        width: 450px;
+        border: 10px solid white;
+        margin-top: 11%;
+        margin-right: 12%;
+        border-radius: 35%;
+    }
+</style>
+<body style="height: auto; background-repeat: no-repeat; background-image: linear-gradient(to top, white, blanchedalmond)">
+    <!-- navbar -->
+    <div class="navbar d-flex justify-content-evenly">
+        <span class="fs-3">Welcome {{ user['first_name'] }}</span> 
+        <a class="fs-5" href="/dashboard">Home</a>       
+        <a class="fs-5" href="/view_campaigns">Campaigns</a>
+        <a class="fs-5" href="/view_characters">Characters</a>
+        <a class="fs-5" href="/dice_roll">Dice Roller</a>
+        <a class="fs-5" href="/info">Race Info</a>
+        <a class="fs-7" href="/logout">logout</a>
+    </div>
+    <div class="main gap-5 d-flex">
+            <!-- this is the character creation form -->
+    <div class="col1 ms-5">
+        <form action="/create_char" class="form-control gap-3 d-flex" method="post" style="width:500px;">
+            <div class="form1">
+            <input type="hidden" name="user_id" value="{{user['id']}}">
+            {% with messages = get_flashed_messages(category_filter=['err.char_name']) %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color: red;">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <label for="name" class="form-label">Character Name:</label>
+            <input type="text" class="form-control" name="name" value="{{session['name']}}" id="name">
+            {% with messages = get_flashed_messages(category_filter=['err.class']) %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color: red;">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <label for="class" class="form-label">Class:</label>
+            <select name="char_class" class="form-select" id="char_class">
+                <option selected disabled>Select a Class</option>
+                <option value="Barbarian">Barbarian</option>
+                <option value="Bard">Bard</option>
+                <option value="Cleric">Cleric</option>
+                <option value="Druid">Druid</option>
+                <option value="Fighter">Fighter</option>
+                <option value="Monk">Monk</option>
+                <option value="Paladin">Paladin</option>
+                <option value="Ranger">Ranger</option>
+                <option value="Rogue">Rogue</option>
+                <option value="Sorcerer">Sorcerer</option>
+                <option value="Warlock">Warlock</option>
+                <option value="Wizard">Wizard</option>
+            </select>
+        
+            {% with messages = get_flashed_messages(category_filter=['err.race']) %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color: red;">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <label for="race" class="form-label">Race:</label>
+            <select name="race" class="form-select" id="race">
+                <option selected disabled>Select a Race</option>
+                <option value="Dragonborn">Dragonborn</option>
+                <option value="Dwarf">Dwarf</option>
+                <option value="Elf">Elf</option>
+                <option value="Gnome">Gnome</option>
+                <option value="Half-Elf">Half-Elf</option>
+                <option value="Halfling">Halfling</option>
+                <option value="Half-Orc">Half-Orc</option>
+                <option value="Human">Human</option>
+                <option value="Tiefling">Tiefling</option>
+            </select>
+        
+            {% with messages = get_flashed_messages(category_filter=['err.race']) %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color: red;">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <label for="strength" class="mt-1 form-label">Strength:</label>
+            <input type="text" class="form-control" value="{{session['strength']}}" name="strength" id="strength">
+            {% with messages = get_flashed_messages(category_filter=['err.str']) %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color: red;">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <label for="constitution" class="form-label">Constitution:</label>
+            <input type="text" class="form-control" value="{{session['constitution']}}" name="constitution" id="constitution">
+            {% with messages = get_flashed_messages(category_filter=['err.const']) %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color: red;">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <label for="dexterity" class="form-label">Dexterity:</label>
+            <input type="text" class="form-control"  value="{{session['dexterity']}}" name="dexterity" id="dexterity">
+            {% with messages = get_flashed_messages(category_filter=['err.dex']) %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color: red;">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <label for="intelligence" class="form-label">Intelligence:</label>
+            <input type="text" class="form-control"  value="{{session['intelligence']}}" name="intelligence" id="intelligence">
+            {% with messages = get_flashed_messages(category_filter=['err.int']) %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color: red;">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <label for="wisdom" class="form-label">Wisdom:</label>
+            <input type="text" class="form-control"  value="{{session['wisdom']}}" name="wisdom" id="wisdom">
+            {% with messages = get_flashed_messages(category_filter=['err.wis']) %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color: red;">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <label for="charisma" class="form-label">Charisma:</label>
+            <input type="text" class="form-control"  value="{{session['charisma']}}" name="charisma" id="charisma">
+            {% with messages = get_flashed_messages(category_filter=['err.char']) %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color: red;">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+            <button type="submit" class="mt-2 btn btn-success">Create Character</button>
+            </div>
+            <div class="form2">
+                <label for="notes" class="form-label">Character Notes:</label>
+                <textarea name="notes" id="notes" cols="30" rows="20" placeholder="For background and general character info.">{{session['notes']}}</textarea>
+                <p class="fs-6 text-center">Roll for a Stat Value:</p>
+                <p class="fs-6 text-center">Rolls: <br> <span id="statRoll"></span> </p>
+                <p class="text-center fs-6">Your stat Value is: <span id="statVal"></span> </p>
+                <p class="fs-6 text-center">Enter into a stat and roll again.</p>
+                <p class="text-center fw-bold border border-dark fs-5" style="border-radius: 15px; cursor: pointer; color:red;" onclick="rollstat()">ROLL!</p>
+            </div>
+        </form>
+    </div>
+    <div class="image">
+        <p class="fs-4 text-center">Choose from a player created character!</p>
+        <table  class="overflow-auto table" style="height: 450px;">
+            <thead style="display: block;">
+                <th class="fs-5" >Name</th>
+                <th class="fs-5" >Race</th>
+                <th class="fs-5" >Class</th>
+            </thead>
+            <tbody style="display: block; overflow-y:auto; overflow-x:hidden; height: 450px;">
+                {% for one in allchars: %}
+                    <tr>
+                        <td class="fs-6">{{ one.name }}</td>
+                        <td class="fs-6" >{{ one.race }}</td>
+                        <td class="fs-6" >{{ one.char_class }}</td>
+                        <td class="fs-6" ><a href="/reuse/{{one.id}}">Roll Stats for This Build</a></td>                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+    </div>
+    <!-- this will be the random generator for a character -->
+    <div class="col2">
+        <h1>Random Character Generator Coming Soon!</h1>
+        <img src="/static/Adirondack-Pass.jpg" alt="adirondack-pass" class="ssimg">
+    </div>
+    </div>
+    <script src="{{ url_for('static', filename='/script.js') }}"></script>
+</body>
+</html>

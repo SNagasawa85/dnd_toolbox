@@ -1,0 +1,30 @@
+select {
+    display: block;
+    margin: 0 auto;
+    }
+option {
+    display: block;
+    margin: 0 auto;
+    }
+.dice {
+    height: 90px;
+    width: 90px;
+    border: 5px solid black;
+    border-radius: 50%;
+}
+.dice:hover{
+    height: 120px;
+    width: 120px;
+    transition: 0.1s;
+}
+.rollbtn{
+    border: 2px solid black;
+    border-radius: 15px;
+    color: red;
+    cursor:pointer;
+}
+.rollbtn:hover{
+    background-color: red;
+    color: black;
+    transition: 0.1s;
+}

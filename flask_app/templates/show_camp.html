@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
+    crossorigin="anonymous">
+</head>
+<body style="height: auto; background-repeat: no-repeat; background-image: linear-gradient(to top, white, blanchedalmond)">
+    <!-- navbar -->
+    <div class="navbar d-flex justify-content-evenly">
+        <span class="fs-3">Welcome {{ user['first_name'] }}</span> 
+        <a class="fs-5" href="/dashboard">Home</a>          
+        <a class="fs-5" href="/view_campaigns">Campaigns</a>
+        <a class="fs-5" href="/view_characters">Characters</a>
+        <a class="fs-5" href="/dice_roll">Dice Roller</a>
+        <a class="fs-5" href="/info">Race Info</a>
+        <a class="fs-7" href="/logout">logout</a>
+    </div>
+    <div class="nav2 d-flex justify-content-evenly">
+        <a href="/new_camp" class="fs-6">Create New Campaign</a>
+    </div>
+    <!-- this will show a table with all the characters -->
+    <div class="camplist overflow-auto" style="height:350px;">
+        <table class="table overflow-auto">
+            <thead>
+                <tr>
+                    <th>Campaign Name</th>
+                    <th>Current notes</th>
+                    <th>Last Updated</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            {% if not camps: %}
+                <tr>
+                    <td>You have no saved campaigns.</td>
+                </tr>
+            {% else %}
+                {% for one in camps: %}
+                    <tr>
+                        <td>{{one.name}}</td>
+                        <td><div style="height: 70px;">{{one.notes}}</div></td>
+                        <td>{{one.updated_at}}</td>  
+                        <td><a class="btn btn-warning" href="/edit/{{one.id}}">View/Add Campaign Notes</a></td>
+                        <td><a class="btn btn-danger" href="/delete/camp/{{one.id}}">Delete Campaign</a</td>              
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </table>
+    </div>
+    <div class="d-flex justify-content-evenly">
+        <!-- this is for the footer image -->
+        <img src="/static/supper.png" alt="Last Dice Supper" class="mt-5" style="background-color: blanchedalmond; width: 80%">
+    </div>
+</body>
+</html>
