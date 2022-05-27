@@ -72,7 +72,7 @@ def info():
     if 'user_id' not in session:
         return redirect('/')
     user = User.get_one({ 'id':session['user_id']})
-    return render_template('test.html', user = user)
+    return render_template('race_info.html', user = user)
 
 @app.route('/logout')
 def logout():
