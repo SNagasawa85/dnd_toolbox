@@ -17,6 +17,7 @@ function rollDice(){
     for(var i = 1 ; i <= dieNum; i++ ){
         values[i]=Math.floor(Math.random() * die) +1;
         numbers.push(values[i]);
+        console.log(numbers)
     }
     console.log(numbers)
     for(key in values){
@@ -57,6 +58,7 @@ function rollDice(){
 }
 
 function selectDie(val){
+    die = val;
     curDie.innerText = 'You have selected D' + val;
 }
 
