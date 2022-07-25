@@ -12,11 +12,11 @@ option {
     border: 5px solid black;
     border-radius: 50%;
 }
-.dice:hover{
+/* .dice:hover{
     height: 120px;
     width: 120px;
     transition: 0.1s;
-}
+} */
 .rollbtn{
     border: 2px solid black;
     border-radius: 15px;

@@ -17,6 +17,7 @@ function rollDice(){
     for(var i = 1 ; i <= dieNum; i++ ){
         values[i]=Math.floor(Math.random() * die) +1;
         numbers.push(values[i]);
+        console.log(numbers)
     }
     console.log(numbers)
     for(key in values){
@@ -58,7 +59,7 @@ function rollDice(){
 
 function selectDie(val){
     die = val;
-    curDie.innerText = 'You have selected D' + die;
+    curDie.innerText = 'You have selected D' + val;
 }
 
 function selectNum(num){
@@ -70,4 +71,25 @@ function selectNum(num){
 function selectRoll(rollType){
     type = rollType;
     curType.innerText = 'You have selected ' + type + ' roll';
+}
+let dieOption = [4,6,8,10,12,20]
+
+function makeDieBig(id){
+    for(var i = 0; i<dieOption.length; i ++){
+        if(dieOption[i] !== id){
+            document.getElementById(dieOption[i]).style.height='90px';
+            document.getElementById(dieOption[i]).style.width='90px';
+        }
+        document.getElementById(id).style.height='121px';
+        document.getElementById(id).style.width='121px';
+    }
+}
+
+
+
+function resetDice(){
+    for(i = 0; i <dieOption.length; i++){
+        document.getElementById(dieOption[i]).style.height='90px';
+        document.getElementById(dieOption[i]).style.width='90px';
+    }
 }

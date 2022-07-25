@@ -24,12 +24,12 @@
         <div class="specificRoll">
             <p class="fs-3 text-center">Choose your Dice!</p>
             <div class="images gap-2 d-flex">
-                <p class="text-center"><img class="dice" onclick="selectDie(20)" src="/static/d20icon.png" alt="D20"> <br> D20</p>
-                <p class="text-center"><img class="dice" onclick="selectDie(12)" src="/static/d12icon.png" alt="D12"> <br>D12</p>
-                <p class="text-center"><img class="dice" onclick="selectDie(10)" src="/static/d10.png" alt="D10"> <br>D10</p>
-                <p class="text-center"><img class="dice" onclick="selectDie(8)" src="/static/d8icon.png" alt="D8"> <br>D8</p>
-                <p class="text-center"><img class="dice" onclick="selectDie(6)" src="/static/d6icon.png" alt="D6"> <br>D6</p>
-                <p class="text-center"><img class="dice" onclick="selectDie(4)" src="/static/d4icon.png" alt="D4"> <br>D4</p>
+                <p class="text-center"><img id="20" class="dice" onclick="selectDie(20); makeDieBig(20)" src="/static/d20icon.png" alt="D20"> <br> D20</p>
+                <p class="text-center"><img id="12" class="dice" onclick="selectDie(12); makeDieBig(12)" src="/static/d12icon.png" alt="D12"> <br>D12</p>
+                <p class="text-center"><img id="10" class="dice" onclick="selectDie(10); makeDieBig(10)" src="/static/d10.png" alt="D10"> <br>D10</p>
+                <p class="text-center"><img id="8" class="dice" onclick="selectDie(8); makeDieBig(8)" src="/static/d8icon.png" alt="D8"> <br>D8</p>
+                <p class="text-center"><img id="6" class="dice" onclick="selectDie(6); makeDieBig(6)" src="/static/d6icon.png" alt="D6"> <br>D6</p>
+                <p class="text-center"><img id="4" class="dice" onclick="selectDie(4); makeDieBig(4)" src="/static/d4icon.png" alt="D4"> <br>D4</p>
             </div>
             <p id="selectedDice"></p>
             <p class="fs-3 text-center">Choose How Many:</p>
@@ -57,10 +57,11 @@
             <p class="fs-4 text-center" id="type"></p>
             <p style="height: 100px; width: 450px;" class="overflow-auto fs-3 ms-5 text-center" id="rolls"></p>
             <p class="fs-3 text-center" id="results"></p>
-            <p class="fs-4 rollbtn fw-bold text-center" onclick="rollDice()">ROLL!</p>
+            <p class="fs-4 rollbtn fw-bold text-center" onclick="rollDice(); resetDice()">ROLL!</p>
         </div>
-
     </div>
     <script src="{{ url_for('static', filename='/roller_script.js') }}"></script>
+
 </body>
+
 </html>
