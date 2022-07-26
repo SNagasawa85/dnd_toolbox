@@ -1,7 +1,7 @@
 # DnD Players Toolbox
 
 A feature rich player toolbox for Dungeons and Dragons
-Built using Python, Flask, MySQL, Javascript, HTML5, CSS, and DnD5e API
+Built using Python, Flask, MySQL, Javascript, HTML5, CSS, and DnD5e API <br/>
 Includes:
 <ul>
   <li>Player Creation</li>
