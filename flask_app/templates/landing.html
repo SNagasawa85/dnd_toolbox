@@ -5,14 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome!</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/landing_style.css') }}">
 </head>
 <body style="height: auto; background-repeat: no-repeat; background-image: linear-gradient(to top, white, blanchedalmond)">
     <h1 class="text-center">Welcome to the Dungeons and Dragons Tool Box!</h1>
     <h3 class="text-center">Please log in or register to use the Tool Box.</h3>
 
     <!-- login and registration forms -->
-    <div class="main d-flex justify-content-evenly mt-5" style="justify-content: evenly; margin-top: 10px" >
+    <div class="main d-flex justify-content-evenly mt-5" style="justify-content: sapce-evenly; margin-top: 10px" >
         <!-- left column div to hold left form -->
         <div class="leftcol ms-5">
             <!-- registration form -->
